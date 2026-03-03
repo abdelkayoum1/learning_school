@@ -23,6 +23,7 @@ class _SignInState extends State<SignIn> {
   late TextEditingController email = TextEditingController();
   late TextEditingController password = TextEditingController();
   late TextEditingController confirmepassword = TextEditingController();
+  final TextEditingController name = TextEditingController();
   GlobalKey<FormState> key = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
@@ -34,7 +35,7 @@ class _SignInState extends State<SignIn> {
           body: Column(
             children: [
               Stackimage(),
-              SizedBox(height: 3),
+              SizedBox(height: 10),
               Expanded(
                 child: Container(
                   width: double.infinity,
@@ -147,19 +148,42 @@ class _SignInState extends State<SignIn> {
                                   ),
                                   title: 'Confirme Password',
                                 ),
+                                SizedBox(height: 10),
+                                CustomerTextFieled(
+                                  validator: (value) {
+                                    if (value == null || value.isEmpty) {
+                                      return 'please remplir cette champe';
+                                    }
+                                  },
+                                  controller: name,
+                                  prefixIcon: Icon(
+                                    Icons.lock,
+                                    weight: 16,
+                                    size: 14,
+                                    color: Color(0xff3B71D8),
+                                  ),
+                                  suffixIcon: Icon(
+                                    Icons.visibility,
+                                    color: Color(0xff94A3B8),
+                                  ),
+                                  title: 'name',
+                                ),
 
                                 SizedBox(height: 10),
                                 state is SignCubitloading
                                     ? Center(child: CircularProgressIndicator())
                                     : Buttonn(
+                                        color: Colors.blue,
                                         onPressed: () {
                                           if (key.currentState!.validate()) {
                                             context
                                                 .read<SigninCubitCubit>()
                                                 .getsign(
+                                                  name: name.text.trim(),
                                                   password: email.text.trim(),
                                                   email: email.text.trim(),
                                                 );
+                                            print(name.text);
                                           }
                                         },
                                         text: 'Sign In',

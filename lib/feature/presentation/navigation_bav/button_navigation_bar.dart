@@ -17,24 +17,37 @@ class ButtonNavigationBar extends StatelessWidget {
             body: context
                 .read<NavigateCubitCubit>()
                 .list[context.read<NavigateCubitCubit>().currentindex],
-            bottomNavigationBar: BottomNavigationBar(
-              currentIndex: context.read<NavigateCubitCubit>().currentindex,
-              selectedItemColor: Colors.red,
-              unselectedItemColor: Colors.blue,
-              onTap: (index) {
-                context.read<NavigateCubitCubit>().change(index);
-              },
-              items: [
-                BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.book),
-                  label: 'My_Course',
+            bottomNavigationBar: Container(
+              color: Colors.black,
+              child: ClipRRect(
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(25),
+                  topRight: Radius.circular(25),
                 ),
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.person),
-                  label: 'Prefile',
+                child: BottomNavigationBar(
+                  backgroundColor: Colors.blue,
+                  currentIndex: context.read<NavigateCubitCubit>().currentindex,
+                  selectedItemColor: Colors.red,
+                  unselectedItemColor: Colors.white,
+                  onTap: (index) {
+                    context.read<NavigateCubitCubit>().change(index);
+                  },
+                  items: [
+                    BottomNavigationBarItem(
+                      icon: Icon(Icons.home),
+                      label: 'Home',
+                    ),
+                    BottomNavigationBarItem(
+                      icon: Icon(Icons.book),
+                      label: 'My_Course',
+                    ),
+                    BottomNavigationBarItem(
+                      icon: Icon(Icons.person),
+                      label: 'Prefile',
+                    ),
+                  ],
                 ),
-              ],
+              ),
             ),
           );
         },

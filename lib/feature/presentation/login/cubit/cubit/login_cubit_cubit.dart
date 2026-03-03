@@ -11,6 +11,7 @@ class LoginCubitCubit extends Cubit<LoginCubitState> {
   Future<void> getlogin({
     required String password,
     required String email,
+    required String name,
   }) async {
     emit(LoginCubitloading());
     try {

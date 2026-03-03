@@ -10,11 +10,12 @@ class Approute {
   static const loginhome = '/loginhome';
   static const signhome = '/signhome';
   static const buttonbar = '/ButtonNavigationBar';
+  // '/';
+  //'/ButtonNavigationBar';
   static const book = '/book';
   static final router = GoRouter(
     routes: [
       GoRoute(path: '/', builder: (context, state) => Splash()),
-
       GoRoute(path: loginhome, builder: (context, state) => LoginHome()),
       GoRoute(path: signhome, builder: (context, state) => SignIn()),
 

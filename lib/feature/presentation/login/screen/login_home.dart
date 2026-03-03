@@ -23,6 +23,7 @@ class _LoginHomeState extends State<LoginHome> {
   late TextEditingController password = TextEditingController();
 
   late TextEditingController email = TextEditingController();
+  final TextEditingController name = TextEditingController();
   GlobalKey<FormState> key = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
@@ -143,6 +144,18 @@ class _LoginHomeState extends State<LoginHome> {
                                   ),
                                   title: 'Entrer your Password',
                                 ),
+                                CustomerTextFieled(
+                                  validator: (value) {
+                                    if (value == null || value.isEmpty) {
+                                      return 'please remplire your champ password';
+                                    }
+
+                                    return null;
+                                  },
+                                  controller: name,
+
+                                  title: 'Entrer name',
+                                ),
                                 SizedBox(height: 5),
                                 Align(
                                   alignment: Alignment.bottomRight,
@@ -160,16 +173,19 @@ class _LoginHomeState extends State<LoginHome> {
                                 state is LoginCubitloading
                                     ? Center(child: CircularProgressIndicator())
                                     : Buttonn(
+                                        color: Colors.blue,
                                         onPressed: () {
                                           if (key.currentState!.validate()) {
                                             print(password.text);
                                             context
                                                 .read<LoginCubitCubit>()
                                                 .getlogin(
+                                                  name: name.text.trim(),
                                                   email: email.text.trim(),
                                                   password: password.text
                                                       .trim(),
                                                 );
+                                            print(name.text);
                                           }
                                         },
                                         text: 'Login',

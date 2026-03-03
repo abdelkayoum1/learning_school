@@ -4,7 +4,8 @@ import 'package:flutter/widgets.dart';
 class Buttonn extends StatelessWidget {
   final String text;
   final void Function()? onPressed;
-  const Buttonn({super.key, required this.text, this.onPressed});
+  final Color? color;
+  const Buttonn({super.key, required this.text, this.onPressed, this.color});
 
   @override
   Widget build(BuildContext context) {
@@ -21,8 +22,8 @@ class Buttonn extends StatelessWidget {
           ),
         ),
         style: TextButton.styleFrom(
-          backgroundColor: Colors.blue,
-          padding: EdgeInsets.all(10),
+          backgroundColor: color,
+          padding: EdgeInsets.all(5),
         ),
       ),
     );
