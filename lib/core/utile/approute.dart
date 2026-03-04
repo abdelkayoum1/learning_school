@@ -15,14 +15,11 @@ class Approute {
   static const book = '/book';
   static final router = GoRouter(
     routes: [
-      GoRoute(path: '/', builder: (context, state) => Splash()),
+      //  GoRoute(path: '/', builder: (context, state) => Splash()),
       GoRoute(path: loginhome, builder: (context, state) => LoginHome()),
       GoRoute(path: signhome, builder: (context, state) => SignIn()),
 
-      GoRoute(
-        path: buttonbar,
-        builder: (context, state) => ButtonNavigationBar(),
-      ),
+      GoRoute(path: '/', builder: (context, state) => ButtonNavigationBar()),
       GoRoute(path: book, builder: (context, state) => Booke()),
     ],
   );

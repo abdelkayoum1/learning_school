@@ -1,13 +1,8 @@
 class ModelCourse {
-  final String title, image, desc;
+  final String? title, image, desc;
   final dynamic price;
 
-  ModelCourse({
-    required this.title,
-    required this.image,
-    required this.desc,
-    required this.price,
-  });
+  ModelCourse({this.title, this.image, this.desc, this.price});
 
   factory ModelCourse.fromJson(Map<String, dynamic> data) {
     return ModelCourse(

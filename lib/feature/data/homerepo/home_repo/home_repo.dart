@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:fooditem/core/error/failure.dart';
+import 'package:fooditem/feature/data/model/model_course.dart';
 
 abstract class HomeRepo {
   Future<Either<Failure, bool>> login({
@@ -14,5 +15,5 @@ abstract class HomeRepo {
     required String name,
   });
 
-  Future<Either<Failure, void>> getcourse();
+  Future<Either<Failure, List<ModelCourse>>> getcourse();
 }

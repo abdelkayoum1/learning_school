@@ -2,6 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:fooditem/core/error/failure.dart';
 import 'package:fooditem/feature/data/homerepo/home_repo/home_repo.dart';
+import 'package:fooditem/feature/data/model/model_course.dart';
 import 'package:gotrue/src/types/user.dart';
 import 'package:supabase/src/supabase_client.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
@@ -82,10 +83,17 @@ class HomeRepoIplm implements HomeRepo {
   }
 
   @override
-  Future<Either<Failure, void>> getcourse() async {
+  Future<Either<Failure, List<ModelCourse>>> getcourse() async {
     try {
-      var res = await supabase.from('course').select();
-      return Right(null);
+      List<ModelCourse> list = [];
+      final res = await supabase.from('course').select();
+      print(res.length);
+      // list = [];
+      for (var item in res) {
+        print(item);
+        list.add(ModelCourse.fromJson(item));
+      }
+      return Right(list);
     } catch (e) {
       if (e is AuthException) {
         return Left(FailureServer());
