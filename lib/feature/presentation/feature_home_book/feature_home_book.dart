@@ -23,7 +23,7 @@ class _FeatureHomeBookState extends State<FeatureHomeBook> {
   SupabaseClient supabaseClient = Supabase.instance.client;
   @override
   Widget build(BuildContext context) {
-    CourseRepoImple.getcourse(userId: supabaseClient.auth.currentUser!.id);
+    //CourseRepoImple.getcourse();
     return BlocProvider(
       create: (context) {
         final cubit = CourseCubit(HomeRepoIplm());
