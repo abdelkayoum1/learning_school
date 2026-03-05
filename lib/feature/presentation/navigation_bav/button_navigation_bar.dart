@@ -25,6 +25,8 @@ class ButtonNavigationBar extends StatelessWidget {
                   topRight: Radius.circular(25),
                 ),
                 child: BottomNavigationBar(
+                  selectedFontSize: 19,
+                  unselectedFontSize: 12,
                   backgroundColor: Colors.blue,
                   currentIndex: context.read<NavigateCubitCubit>().currentindex,
                   selectedItemColor: Colors.red,

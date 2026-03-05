@@ -13,3 +13,7 @@ final class DetailCourseCubitfailure extends DetailCourseCubitState {
 
   DetailCourseCubitfailure({required this.error});
 }
+
+final class AlreadyCourseCubit extends DetailCourseCubitState {}
+
+final class NotalreadyCourse extends DetailCourseCubitState {}

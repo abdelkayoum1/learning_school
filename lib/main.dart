@@ -24,12 +24,15 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
-      theme: ThemeData(colorScheme: .fromSeed(seedColor: Colors.deepPurple)),
-      // home: Splash(),
-      routerConfig: Approute.router,
+    return BlocProvider(
+      create: (context) => DetailCourseCubitCubit(DetailHomeReposImpl()),
+      child: MaterialApp.router(
+        debugShowCheckedModeBanner: false,
+        title: 'Flutter Demo',
+        theme: ThemeData(colorScheme: .fromSeed(seedColor: Colors.deepPurple)),
+        // home: Splash(),
+        routerConfig: Approute.router,
+      ),
     );
   }
 }

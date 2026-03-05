@@ -14,17 +14,6 @@ class DetailHomeReposImpl implements DetailHomeRepos {
   @override
   Future<Either<Failure, void>> enrollcourse(courseid, userId) async {
     try {
-      final check = await supabase
-          .from('enrolle')
-          .select()
-          .eq('user_id', userId)
-          .eq('course_id', courseid)
-          .maybeSingle();
-
-      if (check != null) {
-        return Left(FailureServer(error: "already enrolled"));
-      }
-
       print('start');
       final res = await supabase.from('enrolle').insert({
         'user_id': userId,
@@ -34,6 +23,29 @@ class DetailHomeReposImpl implements DetailHomeRepos {
       print('fin');
 
       return right(null);
+    } catch (e) {
+      return Left(FailureServer(error: e.toString()));
+    }
+  }
+
+  // ignore: strict_top_level_inference
+  @override
+  Future<Either<Failure, bool>> enrollallcourse({
+    required String courseId,
+    required String userId,
+  }) async {
+    try {
+      print('start');
+      final check = await supabase
+          .from('enrolle')
+          .select()
+          .eq('user_id', userId)
+          .eq('course_id', courseId)
+          .maybeSingle();
+
+      print('fin');
+
+      return right(check != null);
     } catch (e) {
       return Left(FailureServer(error: e.toString()));
     }
