@@ -183,8 +183,9 @@ class _SignInState extends State<SignIn> {
                                                 .read<SigninCubitCubit>()
                                                 .getsign(
                                                   name: name.text.trim(),
-                                                  password: email.text.trim(),
                                                   email: email.text.trim(),
+                                                  password: password.text
+                                                      .trim(),
                                                 );
                                             print(name.text);
                                           }

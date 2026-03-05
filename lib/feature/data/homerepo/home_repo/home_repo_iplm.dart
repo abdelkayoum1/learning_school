@@ -14,7 +14,7 @@ class HomeRepoIplm implements HomeRepo {
   late User? usere;
 
   @override
-  Future<Either<Failure, bool>> login({
+  Future<Either<Failure, void>> login({
     required String email,
     required String password,
   }) async {
@@ -28,9 +28,9 @@ class HomeRepoIplm implements HomeRepo {
       print(reponse.user);
       usere = reponse.user;
       if (usere != null) {
-        return Right(true);
+        return Right(null);
       } else {
-        return Right(false);
+        return Right(null);
       }
     } catch (e) {
       print(e);
@@ -43,22 +43,31 @@ class HomeRepoIplm implements HomeRepo {
   }
 
   @override
-  Future<Either<Failure, bool>> signUp({
+  Future<Either<Failure, void>> signUp({
     required String password,
     required String email,
     required String name,
   }) async {
     try {
-      final reponse = await supabase.auth.signUp(
+      print('=== START SIGNUP ===');
+      print('Email: ${email.trim()}');
+      print('Password: ${password.trim()}');
+      AuthResponse reponse = await supabase.auth.signUp(
         email: email.trim(),
         password: password.trim(),
+        emailRedirectTo: null,
       );
-      await get(name: name, email: email);
+      print('=== RESPONSE ===');
+      print('User: ${reponse.user}');
+      print('Session: ${reponse.session}');
+
+      print('ajoiter succes');
       usere = reponse.user;
       if (usere != null) {
-        return Right(true);
+        await get(name: name, email: email);
+        return Right(null);
       } else {
-        return Right(false);
+        return Right(null);
       }
     } catch (e) {
       if (e is AuthException) {
@@ -75,8 +84,8 @@ class HomeRepoIplm implements HomeRepo {
     try {
       final res = await supabase.from('users').insert({
         'id': usere!.id,
-        'name': name,
-        'email': email,
+        'name': name.trim(),
+        'email': email.trim(),
       });
       return Right(null);
     } catch (e) {

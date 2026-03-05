@@ -20,10 +20,10 @@ class LoginHome extends StatefulWidget {
 }
 
 class _LoginHomeState extends State<LoginHome> {
-  late TextEditingController password = TextEditingController();
+  TextEditingController password = TextEditingController();
 
-  late TextEditingController email = TextEditingController();
-  final TextEditingController name = TextEditingController();
+  TextEditingController email = TextEditingController();
+  TextEditingController name = TextEditingController();
   GlobalKey<FormState> key = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {

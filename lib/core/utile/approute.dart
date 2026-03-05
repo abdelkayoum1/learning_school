@@ -13,12 +13,11 @@ import 'package:go_router/go_router.dart';
 
 class Approute {
   static const loginhome = '/';
-  //'/loginhome';
+
   static const signhome = '/signhome';
   static const buttonbar = '/ButtonNavigationBar';
   static const featuredetail = '/featuredetail';
-  // '/';
-  //'/ButtonNavigationBar';
+
   static const book = '/book';
   static final router = GoRouter(
     routes: [

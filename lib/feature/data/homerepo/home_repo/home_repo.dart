@@ -4,13 +4,13 @@ import 'package:fooditem/feature/data/model/model_course.dart';
 import 'package:fooditem/feature/data/model/model_name.dart';
 
 abstract class HomeRepo {
-  Future<Either<Failure, bool>> login({
+  Future<Either<Failure, void>> login({
     required String email,
 
     required String password,
   });
 
-  Future<Either<Failure, bool>> signUp({
+  Future<Either<Failure, void>> signUp({
     required String password,
     required String email,
     required String name,

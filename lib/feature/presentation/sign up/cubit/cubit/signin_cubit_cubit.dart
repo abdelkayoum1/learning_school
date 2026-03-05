@@ -17,8 +17,8 @@ class SigninCubitCubit extends Cubit<SigninCubitState> {
     emit(SignCubitloading());
     try {
       var resultat = await homerepo.signUp(
-        email: email.trim(),
-        password: password.trim(),
+        email: email,
+        password: password,
         name: name,
       );
 
