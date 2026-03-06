@@ -1,9 +1,9 @@
 class Modelname {
-  final String name;
+  final String name, email;
 
-  Modelname({required this.name});
+  Modelname({required this.name, required this.email});
 
   factory Modelname.fromJson(Map<String, dynamic> json) {
-    return Modelname(name: json['name']);
+    return Modelname(name: json['name'], email: json['email']);
   }
 }

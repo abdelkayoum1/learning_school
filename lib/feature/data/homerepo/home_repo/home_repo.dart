@@ -19,4 +19,6 @@ abstract class HomeRepo {
   Future<Either<Failure, List<ModelCourse>>> getcourse();
 
   Future<Either<Failure, List<Modelname>>> getname();
+
+  Future<Either<Failure, void>> logout();
 }

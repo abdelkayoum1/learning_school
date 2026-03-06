@@ -1,9 +1,11 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
 import 'package:fooditem/core/error/failure.dart';
 import 'package:fooditem/feature/data/homerepo/home_repo/home_repo.dart';
 import 'package:fooditem/feature/data/model/model_course.dart';
 import 'package:fooditem/feature/data/model/model_name.dart';
+import 'package:go_router/go_router.dart';
 import 'package:gotrue/src/types/user.dart';
 import 'package:supabase/src/supabase_client.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
@@ -119,19 +121,30 @@ class HomeRepoIplm implements HomeRepo {
   Future<Either<Failure, List<Modelname>>> getname() async {
     try {
       List<Modelname> list = [];
-      final res = await supabase.from('users').select();
+      final res = await supabase.from('users').select('(*)');
       print(res.length);
       // list = [];
       for (var item in res) {
         print(item);
         list.add(Modelname.fromJson(item));
       }
+
       return Right(list);
     } catch (e) {
       if (e is AuthException) {
         return Left(FailureServer());
       }
       return Left(FailureServer());
+    }
+  }
+
+  @override
+  Future<Either<Failure, void>> logout() async {
+    try {
+      await supabase.auth.signOut();
+      return Right(null);
+    } catch (e) {
+      return Left(FailureServer(error: e.toString()));
     }
   }
 }
