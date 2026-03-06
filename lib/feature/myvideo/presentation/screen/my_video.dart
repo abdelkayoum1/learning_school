@@ -1,10 +1,12 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fooditem/core/utile/approute.dart';
 import 'package:fooditem/feature/data/model/model_course.dart';
 import 'package:fooditem/feature/myvideo/data/my_video_home_repo/my_video_home_repo_impl.dart';
 import 'package:fooditem/feature/myvideo/data/myvideo_cubit/myvideo_cubit.dart';
 import 'package:fooditem/feature/myvideo/data/myvideo_cubit/myvideo_state.dart';
+import 'package:go_router/go_router.dart';
 
 class MyVideo extends StatelessWidget {
   final String coursId;
@@ -89,7 +91,12 @@ class MyVideo extends StatelessWidget {
                                     ],
                                   ),
                                   IconButton(
-                                    onPressed: () {},
+                                    onPressed: () {
+                                      GoRouter.of(context).push(
+                                        Approute.playervideo,
+                                        extra: state.coursevideo[index],
+                                      );
+                                    },
                                     icon: Icon(Icons.video_call),
                                   ),
                                 ],

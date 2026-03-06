@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fooditem/feature/data/homerepo/home_repo/home_repo_iplm.dart';
 import 'package:fooditem/feature/data/model/model_course.dart';
 import 'package:fooditem/feature/my_course/presentation/screen/my_course.dart';
+import 'package:fooditem/feature/my_course/presentation/screen/player_video.dart';
 import 'package:fooditem/feature/myvideo/presentation/screen/my_video.dart';
 import 'package:fooditem/feature/presentation/featue_detail/feature_detail.dart';
 import 'package:fooditem/feature/presentation/feature_home_book/cubit/course_cubit.dart';
@@ -22,6 +23,7 @@ class Approute {
 
   static const book = '/book';
   static const myvideo = '/myveideo';
+  static const playervideo = '/playervideo';
   static final router = GoRouter(
     routes: [
       //  GoRoute(path: '/', builder: (context, state) => Splash()),
@@ -44,6 +46,11 @@ class Approute {
           create: (context) => CourseCubit(HomeRepoIplm()),
           child: FeatureDetail(course: state.extra as ModelCourse),
         ),
+      ),
+      GoRoute(
+        path: playervideo,
+        builder: (context, state) =>
+            PlayerVideo(cours: state.extra as ModelCourse),
       ),
     ],
   );
