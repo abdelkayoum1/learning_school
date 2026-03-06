@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fooditem/core/utile/approute.dart';
 import 'package:fooditem/core/widget/button.dart';
 import 'package:fooditem/feature/data/homerepo/home_repo/home_repo_iplm.dart';
-import 'package:fooditem/feature/my_ourse.dart/cubit/course_repo_home/course_repo_imple.dart';
+import 'package:fooditem/feature/my_course/cubit/course_repo_home/course_repo_imple.dart';
 import 'package:fooditem/feature/presentation/feature_home_book/cubit/course_cubit.dart';
 import 'package:fooditem/feature/presentation/feature_home_book/cubit/course_state.dart';
 

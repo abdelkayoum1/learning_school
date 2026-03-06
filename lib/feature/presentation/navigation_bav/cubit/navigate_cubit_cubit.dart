@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
-import 'package:fooditem/feature/my_ourse.dart/presentation/screen/my_course.dart';
+import 'package:fooditem/feature/my_course/presentation/screen/my_course.dart';
 import 'package:fooditem/feature/presentation/feature_home_book/feature_home_book.dart';
 import 'package:fooditem/feature/presentation/login/screen/login_home.dart';
 import 'package:fooditem/feature/presentation/navigation_bav/book.dart';

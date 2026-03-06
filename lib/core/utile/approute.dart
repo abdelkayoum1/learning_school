@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fooditem/feature/data/homerepo/home_repo/home_repo_iplm.dart';
 import 'package:fooditem/feature/data/model/model_course.dart';
-import 'package:fooditem/feature/my_ourse.dart/presentation/screen/my_course.dart';
+import 'package:fooditem/feature/my_course/presentation/screen/my_course.dart';
 import 'package:fooditem/feature/myvideo/presentation/screen/my_video.dart';
 import 'package:fooditem/feature/presentation/featue_detail/feature_detail.dart';
 import 'package:fooditem/feature/presentation/feature_home_book/cubit/course_cubit.dart';
@@ -34,7 +34,10 @@ class Approute {
       ),
 
       //   GoRoute(path: book, builder: (context, state) => Booke()),
-      GoRoute(path: myvideo, builder: (context, state) => MyVideo()),
+      GoRoute(
+        path: myvideo,
+        builder: (context, state) => MyVideo(coursId: state.extra as String),
+      ),
       GoRoute(
         path: featuredetail,
         builder: (context, state) => BlocProvider(

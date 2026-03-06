@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fooditem/core/utile/approute.dart';
 import 'package:fooditem/core/widget/button.dart';
-import 'package:fooditem/feature/my_ourse.dart/cubit/course_repo_home/course_repo_imple.dart';
-import 'package:fooditem/feature/my_ourse.dart/presentation/mycourse_cubit/mycourse_cubit_cubit.dart';
+import 'package:fooditem/feature/my_course/cubit/course_repo_home/course_repo_imple.dart';
+import 'package:fooditem/feature/my_course/presentation/mycourse_cubit/mycourse_cubit_cubit.dart';
 import 'package:go_router/go_router.dart';
 
 class MyCourse extends StatelessWidget {
@@ -89,9 +89,10 @@ class MyCourse extends StatelessWidget {
                                       SizedBox(height: 20),
                                       ElevatedButton(
                                         onPressed: () {
-                                          GoRouter.of(
-                                            context,
-                                          ).push(Approute.myvideo);
+                                          GoRouter.of(context).push(
+                                            Approute.myvideo,
+                                            extra: state.cours[index].id,
+                                          );
                                         },
                                         child: Text(
                                           'complete',
